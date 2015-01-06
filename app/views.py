@@ -12,7 +12,10 @@ def index():
     email = None
     form = loginForm()
     if form.validate_on_submit():
-        course_info = GetHTML.htmlHandle(form.username.data,form.password.data)
+        try:
+            course_info = GetHTML.htmlHandle(form.username.data,form.password.data)
+        except:
+            return
         print(course_info)
 
         timesold = course_info[2]
